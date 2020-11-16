@@ -1,23 +1,23 @@
-import path from 'path';
-import favicon from 'serve-favicon';
-import compress from 'compression';
-import helmet from 'helmet';
-import cors from 'cors';
-
-import feathers from '@feathersjs/feathers';
 import configuration from '@feathersjs/configuration';
 import express from '@feathersjs/express';
+import feathers, { HookContext as FeathersHookContext } from '@feathersjs/feathers';
 import socketio from '@feathersjs/socketio';
-
-
+import compress from 'compression';
+import cors from 'cors';
+import swagger from 'feathers-swagger';
+import helmet from 'helmet';
+import path from 'path';
+import favicon from 'serve-favicon';
+import appHooks from './app.hooks';
+import authentication from './authentication';
+import channels from './channels';
 import { Application } from './declarations';
 import logger from './logger';
 import middleware from './middleware';
 import services from './services';
-import appHooks from './app.hooks';
-import channels from './channels';
-import { HookContext as FeathersHookContext } from '@feathersjs/feathers';
-import authentication from './authentication';
+import swaggerConfig from './swagger';
+
+
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers());
@@ -43,6 +43,8 @@ app.configure(socketio());
 
 // Configure other middleware (see `middleware/index.ts`)
 app.configure(middleware);
+// Set up swagger docs (see `swagger.ts`)
+app.configure(swagger(swaggerConfig));
 app.configure(authentication);
 // Set up our services (see `services/index.ts`)
 app.configure(services);
