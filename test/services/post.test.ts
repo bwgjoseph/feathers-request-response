@@ -2,10 +2,10 @@
 import { Paginated } from '@feathersjs/feathers';
 import assert from 'assert';
 import app from '../../src/app';
-import { CommentResponse } from '../../src/services/comment/comment.interface';
-import { PostRequest, PostResponse } from '../../src/services/post/post.interface';
+import { CommentResponse } from '../../src/services/comment';
+import { PostRequest, PostResponse } from '../../src/services/post';
 
-describe.only('\'post\' service', () => {
+describe('\'post\' service', () => {
   it('registered the service', () => {
     const service = app.service('post');
 

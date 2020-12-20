@@ -1,8 +1,8 @@
 import { NedbServiceOptions, Service } from 'feathers-nedb';
 import { ServiceSwaggerAddon, ServiceSwaggerOptions } from 'feathers-swagger/types';
 import { Application } from '../../declarations';
-import { PostResponse } from './post.interface';
-import { requestSchema, responseSchema } from './post.schema';
+import BaseService from '../BaseService';
+import { PostResponse, requestSchema, responseSchema } from './index';
 
 export class Post extends Service<PostResponse> implements ServiceSwaggerAddon {
   //eslint-disable-next-line @typescript-eslint/no-unused-vars

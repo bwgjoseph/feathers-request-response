@@ -1,10 +1,7 @@
 // Initializes the `comment` service on path `/comment`
 import { Service } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import createModel from '../../models/comment.model';
-import { Comment } from './comment.class';
-import hooks from './comment.hooks';
-import { CommentRequest, CommentResponse } from './comment.interface';
+import { Comment, CommentRequest, CommentResponse, hooks, model } from './index';
 
 // Add this service to the service type index
 declare module '../../declarations' {
@@ -15,7 +12,7 @@ declare module '../../declarations' {
 
 export default function (app: Application): void {
   const options = {
-    Model: createModel(app),
+    Model: model(app),
     paginate: app.get('paginate')
   };
 

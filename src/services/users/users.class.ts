@@ -1,4 +1,4 @@
-import { Service, NedbServiceOptions } from 'feathers-nedb';
+import { NedbServiceOptions, Service } from 'feathers-nedb';
 import { Application } from '../../declarations';
 
 export class Users extends Service {

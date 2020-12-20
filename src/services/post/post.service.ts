@@ -1,10 +1,7 @@
 // Initializes the `post` service on path `/post`
 import { Service } from '@feathersjs/feathers';
 import { Application } from '../../declarations';
-import createModel from '../../models/post.model';
-import { Post } from './post.class';
-import hooks from './post.hooks';
-import { PostRequest, PostResponse } from './post.interface';
+import { hooks, model, Post, PostRequest, PostResponse } from './index';
 
 // Add this service to the service type index
 declare module '../../declarations' {
@@ -15,7 +12,7 @@ declare module '../../declarations' {
 
 export default function (app: Application): void {
   const options = {
-    Model: createModel(app),
+    Model: model(app),
     paginate: app.get('paginate')
   };
 
